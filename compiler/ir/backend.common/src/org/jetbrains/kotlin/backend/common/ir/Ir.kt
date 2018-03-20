@@ -34,7 +34,8 @@ abstract class Symbols<out T: CommonBackendContext>(val context: T, private val 
     protected fun builtInsPackage(vararg packageNameSegments: String) =
             context.builtIns.builtInsModule.getPackage(FqName.fromSegments(listOf(*packageNameSegments))).memberScope
 
-    val refClass = symbolTable.referenceClass(context.getInternalClass("Ref"))
+    // TODO what is it?
+    val refClass by lazy { symbolTable.referenceClass(context.getInternalClass("Ref")) }
 
     //abstract val areEqualByValue: List<IrFunctionSymbol>
 
@@ -74,7 +75,8 @@ abstract class Symbols<out T: CommonBackendContext>(val context: T, private val 
 //    val getProgressionLast = context.getInternalFunctions("getProgressionLast")
 //            .map { Pair(it.returnType, symbolTable.referenceSimpleFunction(it)) }.toMap()
 
-    val defaultConstructorMarker = symbolTable.referenceClass(context.getInternalClass("DefaultConstructorMarker"))
+    // TODO what is it?
+    val defaultConstructorMarker by lazy { symbolTable.referenceClass(context.getInternalClass("DefaultConstructorMarker")) }
 
     val any = symbolTable.referenceClass(builtIns.any)
     val unit = symbolTable.referenceClass(builtIns.unit)
@@ -164,14 +166,15 @@ abstract class Symbols<out T: CommonBackendContext>(val context: T, private val 
 
     abstract val coroutineSuspendedGetter: IrSimpleFunctionSymbol
 
-    val kFunctionImpl = symbolTable.referenceClass(context.reflectionTypes.kFunctionImpl)
+    // TODO: investigate
+    val kFunctionImpl by lazy { symbolTable.referenceClass(context.reflectionTypes.kFunctionImpl) }
 
-    val kProperty0Impl = symbolTable.referenceClass(context.reflectionTypes.kProperty0Impl)
-    val kProperty1Impl = symbolTable.referenceClass(context.reflectionTypes.kProperty1Impl)
-    val kProperty2Impl = symbolTable.referenceClass(context.reflectionTypes.kProperty2Impl)
-    val kMutableProperty0Impl = symbolTable.referenceClass(context.reflectionTypes.kMutableProperty0Impl)
-    val kMutableProperty1Impl = symbolTable.referenceClass(context.reflectionTypes.kMutableProperty1Impl)
-    val kMutableProperty2Impl = symbolTable.referenceClass(context.reflectionTypes.kMutableProperty2Impl)
+    val kProperty0Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kProperty0Impl) }
+    val kProperty1Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kProperty1Impl) }
+    val kProperty2Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kProperty2Impl) }
+    val kMutableProperty0Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kMutableProperty0Impl) }
+    val kMutableProperty1Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kMutableProperty1Impl) }
+    val kMutableProperty2Impl by lazy { symbolTable.referenceClass(context.reflectionTypes.kMutableProperty2Impl) }
 //    val kLocalDelegatedPropertyImpl = symbolTable.referenceClass(context.reflectionTypes.kLocalDelegatedPropertyImpl)
 //    val kLocalDelegatedMutablePropertyImpl = symbolTable.referenceClass(context.reflectionTypes.kLocalDelegatedMutablePropertyImpl)
 
