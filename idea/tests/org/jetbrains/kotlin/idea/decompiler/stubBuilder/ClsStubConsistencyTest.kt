@@ -47,4 +47,8 @@ class ClsStubConsistencyTest : KotlinLightCodeInsightFixtureTestCase() {
     fun testConsistency() {
         doTest(ClassId.topLevel(FqName("kotlin.collections.CollectionsKt")))
     }
+
+    fun testConsistencyTopCoroutines() {
+        doTest(ClassId.topLevel(FqName("kotlin.coroutines.experimental.CoroutinesKt")))
+    }
 }

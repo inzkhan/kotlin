@@ -208,7 +208,8 @@ class TypeClsStubBuilder(private val c: ClsStubBuilderContext) {
             createTypeReferenceStub(functionType, returnType)
         }
         else {
-            createTypeReferenceStub(functionType, suspendParameterType.getArgument(0).type)
+            val continuationArgumentType = suspendParameterType.getArgument(0).type(c.typeTable)!!
+            createTypeReferenceStub(functionType, continuationArgumentType)
         }
     }
 

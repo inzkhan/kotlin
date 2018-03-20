@@ -181,6 +181,12 @@ public class ClsStubBuilderTestGenerated extends AbstractClsStubBuilderTest {
         doTest(fileName);
     }
 
+    @TestMetadata("TopJvmName")
+    public void testTopJvmName() throws Exception {
+        String fileName = KotlinTestUtils.navigationMetadata("idea/testData/decompiler/stubBuilder/TopJvmName/");
+        doTest(fileName);
+    }
+
     @TestMetadata("TopJvmPackageName")
     public void testTopJvmPackageName() throws Exception {
         String fileName = KotlinTestUtils.navigationMetadata("idea/testData/decompiler/stubBuilder/TopJvmPackageName/");

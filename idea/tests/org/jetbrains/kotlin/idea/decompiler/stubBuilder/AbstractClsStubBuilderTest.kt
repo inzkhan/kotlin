@@ -83,10 +83,15 @@ fun StubElement<out PsiElement>.serializeToString(): String {
 
 fun VirtualFile.findClassFileByName(className: String): VirtualFile {
     val files = LinkedHashSet<VirtualFile>()
+    refresh(false, true)
     VfsUtilCore.iterateChildrenRecursively(
-            this,
-            { virtualFile -> virtualFile.isDirectory || virtualFile.name == "$className.class" },
-            { virtualFile -> if (!virtualFile.isDirectory) files.addIfNotNull(virtualFile); true })
+        this,
+        { virtualFile ->
+            virtualFile.isDirectory || virtualFile.name == "$className.class"
+        },
+        { virtualFile ->
+            if (!virtualFile.isDirectory) files.addIfNotNull(virtualFile); true
+        })
 
     return files.single()
 }
